@@ -4,21 +4,40 @@
 
  function lastIndexOf (array, value) {
            
-   let output = []; 
+   let output; 
 
-   for (let i = 0; i < array.length; i++) {
+   for (let i = array.length -1; i >= 0; i--) {
    
-       if (array[i] === value) {
+      if (array[i] === value) {
 
-          output = array.lastIndexOf(value); 
-     
-          return output;  
-        }
-   
-     }
-   return -1;  
- }  
+          output = [i]; 
 
- console.log(lastIndexOf(numArray, 3));   
+          return output; 
+      }
+
+   }  
+    
+      return -1;      
+ }
+
+console.log(lastIndexOf(numArray, 17));   
+               
+
+
 
  
+
+
+
+                     
+                     
+             
+
+
+ 
+
+
+
+
+
+
