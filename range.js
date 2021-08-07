@@ -10,11 +10,11 @@ function range (start, end, step) {
       return []; 
     }  
       
-  i = i + step;   
+    i = i + step;   
     
-  output.push(i);  
-}
-return output;    
+    output.push(i);  
+  }
+  return output;    
 }
 
 console.log(range(0, 8, 2));       
