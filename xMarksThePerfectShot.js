@@ -10,30 +10,30 @@ function finalPosition (moves) {
 
     if (moves[i] === "north") {
      
-    resultArray[1] += 1; 
-  }
+      resultArray[1] += 1; 
+    }
 
     if (moves[i] === "west") {
       
-    resultArray[0] -= 1;
-  }
+      resultArray[0] -= 1;
+    }
 
     if (moves[i] === "south") {
 
-    resultArray[1] -= 1; 
-  }
+      resultArray[1] -= 1; 
+    }
 
     if (moves[i] === "east") {
 
-    resultArray[0] += 1; 
-  }
+      resultArray[0] += 1; 
+    }
 
   
   }
  
-  console.log(resultArray)
+  return resultArray; 
 }
 
 
-finalPosition(moves); 
+console.log(finalPosition(moves));  
 
