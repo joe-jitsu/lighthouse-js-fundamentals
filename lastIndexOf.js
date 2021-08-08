@@ -4,7 +4,7 @@
 
  function lastIndexOf (array, value) {
            
-   let output; 
+   let output = []; 
 
    for (let i = array.length -1; i >= 0; i--) {
    
@@ -20,9 +20,11 @@
       return -1;      
  }
 
-console.log(lastIndexOf(numArray, 3));   
-console.log(lastIndexOf(numArray, 19));   
-console.log(lastIndexOf(numArray, 4));   
+console.log(lastIndexOf(numArray, 3));   // 11
+console.log(lastIndexOf(numArray, 19));  // 6
+console.log(lastIndexOf(numArray, 4));   // 0
+console.log(lastIndexOf(numArray, 0));   // -1
+console.log(lastIndexOf(numArray, 17));   // -1
  
 
 
