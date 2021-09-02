@@ -15,14 +15,13 @@ const vegetables = [
     plumpness: 3
   }
 ]; 
-
 const metric = 'redness'; 
-
 
 const judgeVegetable = function (vegetables, metric) {
 
   let max = 0;   
-  let max2;   
+  let max2 = "";    
+  
   for (let i = 0; i < vegetables.length; i++) {
       
     if (vegetables[i][metric] > max) {
@@ -37,6 +36,12 @@ const judgeVegetable = function (vegetables, metric) {
 }
 
 console.log(judgeVegetable(vegetables, metric)); 
+
+
+
+
+
+
 
 
 
