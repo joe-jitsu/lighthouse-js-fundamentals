@@ -1,17 +1,16 @@
-
 const lastIndexOf = function (array, value) {
 
   let output = -1; 
       
   for (let i = 0; i < array.length; i ++) {
 
-      if (array[i] === value) {
+    if (array[i] === value) {
 
-output = i; 
+      output = i; 
                
-        }  
-    }      
-   return output;  
+    }  
+  }      
+  return output;  
 }
 
 console.log(lastIndexOf([ 0, 1, 4, 1, 2 ], 1), "=?", 3);
