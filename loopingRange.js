@@ -1,4 +1,4 @@
-function range(start, end, step) {
+function range (start, end, step) {
 
   let output = [];
 
