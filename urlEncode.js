@@ -1,20 +1,18 @@
 const urlEncode = function (text) {
 
-  let var2 = "";    
-  let var1 = text.trim();         
+  let output = "";
+  let splitString = text.trim().split(" ");
 
-for (let i = 0; i < var1.length; i++) {
+  output += splitString.slice(0, 1);
 
-       var2 += var1[i];  
+  for (let i = 1; i < splitString.length; i++) {
 
-    if (var1[i] === " ") {
-  
-       var2 += "%20";
-       
-      }  
-   }                
- return var2.replaceAll(" ", "");    
-}; 
+    output += "%20";
+    output += splitString[i].slice(0)
+  };
+
+  return output;
+};
 
 console.log(urlEncode("Lighthouse Labs"));
 console.log(urlEncode(" Lighthouse Labs "));
