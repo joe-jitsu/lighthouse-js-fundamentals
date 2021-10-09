@@ -1,58 +1,114 @@
-const squareCode = function (message) {
+const squareCode = function (message, decodeOrEncode) {
 
-  let removeSpace = message.toLowerCase().replaceAll(" ", "");
-  let base = Math.ceil(Math.sqrt(removeSpace.length));
-  let reducedBase = base - 1;
-  let output = "";  
+  function squareEncode(message) {
 
-  for (let i = 0; i < removeSpace.length; i++) {
+    let removeSpace = message.toLowerCase().replaceAll(" ", "");
+    let base = Math.ceil(Math.sqrt(removeSpace.length));
+    let reducedBase = base - 1;
+    let output = "";
 
-    output += removeSpace[i];
+    // building the first row of squareGrid; 
 
-    if (i > 0 && i % reducedBase === 0) {
+    for (let i = 0; i < removeSpace.length; i++) {
 
-      output += "\n";
-      break;
-    }
-  }
+      output += removeSpace[i];
 
-  for (let j = base; j < removeSpace.length; j++) {
+      if (i > 0 && i % reducedBase === 0) {
 
-    output += removeSpace[j];
-
-    if ((j + 1) % base === 0) {
-
-      output += "\n";
-    }
-  };
-
-  let removeNewlines = output.replaceAll("\n", "");
-  let output2 = "";
-  let varIncrement = 0;
-
-  let y = 0;
-  while (varIncrement <= reducedBase) {
-
-    y++;
-
-    for (let k = 0; k < removeNewlines.length; k++) {
-
-      if ((k - varIncrement) % base === 0) {
-
-        output2 += removeNewlines[k];
-      }
-
-      if (k === removeNewlines.length - 1) {
-
-        varIncrement++;
-        output2 += " ";
+        output += "\n";
+        break;
       }
     }
-  }
-  return output2;
-};
 
-console.log(squareCode("chill out"));
-console.log(squareCode("feed the dog"));
-console.log(squareCode("have a nice day"));
-console.log(squareCode("If man was meant to stay on the ground god would have given us roots"));
+    // building all other rows of squareGrid at the same time;  
+
+    for (let j = base; j < removeSpace.length; j++) {
+
+      output += removeSpace[j];
+
+      if ((j + 1) % base === 0) {
+
+        output += "\n";
+      }
+    };
+
+    // we are building codedMessage; 
+
+    let removeNewlines = output.replaceAll("\n", "");
+    let output2 = "";
+    let varIncrement = 0;
+
+    let y = 0;
+    while (varIncrement <= reducedBase) {
+
+      for (let k = 0; k < removeNewlines.length; k++) {
+
+        if ((k - varIncrement) % base === 0) {
+
+          output2 += removeNewlines[k];
+        }
+
+        if (k === removeNewlines.length - 1) {
+
+          varIncrement++;
+          output2 += " ";
+        }
+      }
+    }
+    // a last step; output2's empty space on the end must be destroyed:
+
+    let finalOutput = output2.trim();
+
+    return finalOutput;
+  }; // helperEncode
+
+  function squareDecode(message) {
+
+    let squareGrid = "";
+    let splitMessage = message.toLowerCase().split(" ");
+    let varIncrement = 0;
+    let loopStop = splitMessage.length;
+
+    let i = 0;
+    while (varIncrement < loopStop) {
+
+      i++;
+
+      for (let j = 0; j < splitMessage.length; j++) {
+
+        if (splitMessage[j][varIncrement] !== undefined) {
+
+          squareGrid += splitMessage[j][varIncrement]
+        }
+
+        if (j === splitMessage.length - 1) {
+
+          squareGrid += "\n";
+          varIncrement++;
+        }
+      }
+    }
+    return squareGrid;
+  }; // helperDecode
+
+  if (decodeOrEncode === "encode") {
+
+    return squareEncode(message);
+  }
+
+  if (decodeOrEncode === "decode") {
+
+    return squareDecode(message);
+  }
+  
+} // squareCode end block
+
+console.log(squareCode("chill out", "encode"));
+console.log(squareCode("fEed the dog", "encode"));
+console.log(squareCode("hAve a nice day", "encode"));
+console.log(squareCode("If man was meant to stay on the ground god would have given us roots", "encode"));
+
+console.log(squareCode("clu hlt io", "decode"));
+console.log(squareCode("iMTgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau", "decode"));
+console.log(squareCode("fto ehg ee dd", "decode"));
+console.log(squareCode("hae and via ecy", "decode"));
