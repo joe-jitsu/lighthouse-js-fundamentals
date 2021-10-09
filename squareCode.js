@@ -3,7 +3,7 @@ const squareCode = function (message) {
   let removeSpace = message.toLowerCase().replaceAll(" ", "");
   let base = Math.ceil(Math.sqrt(removeSpace.length));
   let reducedBase = base - 1;
-  let output = "";
+  let output = "";  
 
   for (let i = 0; i < removeSpace.length; i++) {
 
